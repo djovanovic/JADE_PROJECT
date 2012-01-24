@@ -26,7 +26,7 @@ public class MarketAgent extends AgentStarter {
 		
 		addBehaviour(new MarketMessageClient());
 
-		marketMockSetupOffers.start();
-		marketMockSetupBids.start();
+		//marketMockSetupOffers.start();
+		//marketMockSetupBids.start();
 	}
 }

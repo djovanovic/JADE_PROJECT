@@ -24,13 +24,16 @@ public class MarketGuiFrame {
 	public static final int FRAMEHEIGHT = 600;
 	
 	private JFrame marketFrame;
+	private JPanel marketFramePanel, marketLogTablePanel;
 	public OrderBookGui orderBookGui;
-	public MarketLogTable marketLogTable;
+	public MarketTabbedPane marketTabbedPane;
+	
 	
 	public MarketGuiFrame() {
 		
 		marketFrame = new JFrame();
-		marketFrame.setLayout(new StackLayout(1));
+		marketFramePanel = new JPanel();
+		marketFramePanel.setLayout(new StackLayout(1));
 		
 		orderBookGui = new OrderBookGui();
 		orderBookGui.setPreferredSize(new Dimension(700, 600));
@@ -40,17 +43,16 @@ public class MarketGuiFrame {
 	
 	private void render() {
 		
-		marketFrame.add(orderBookGui);
+		marketFramePanel.add(orderBookGui);
 		
 		// Add LogTable
-		JPanel marketLogTablePanel = new JPanel();		
-		marketLogTable = new MarketLogTable();		
-
-		JScrollPane pane = marketLogTable.getScrollPane();
-		pane.setPreferredSize(new Dimension(690, 230));
-		marketLogTablePanel.add(pane, BorderLayout.CENTER);
+		marketLogTablePanel = new JPanel();		
+		marketTabbedPane = new MarketTabbedPane();
+		marketTabbedPane.setPreferredSize(new Dimension(690, 230));
 		
-		marketFrame.add(marketLogTablePanel);
+		marketLogTablePanel.add(marketTabbedPane, BorderLayout.CENTER);
+		
+		marketFramePanel.add(marketLogTablePanel);
 
 	}
 
@@ -59,11 +61,18 @@ public class MarketGuiFrame {
 		GraphicsConfiguration gc = marketFrame.getGraphicsConfiguration();  
 		Rectangle bounds = gc.getBounds();
 		   
+		//marketFramePanel.setSize(FRAMEWIDTH, FRAMEHEIGHT+100);
+		//JScrollPane frameScrollPane = new JScrollPane(marketFramePanel);
+		
+		marketFrame.add(marketFramePanel);
+		
 		// Set the Location and Activate  
 		marketFrame.setLocation((int) ((bounds.width / 2) - (FRAMEWIDTH) - 50), (int) ((bounds.height / 2) - (FRAMEHEIGHT / 2))); 
 
-		marketFrame.setSize(FRAMEWIDTH, FRAMEHEIGHT+330);
+		marketFrame.setSize(FRAMEWIDTH, FRAMEHEIGHT+400);
 		marketFrame.pack();
+		//JScrollPane frameScrollPane = new JScrollPane(marketFrame);
+		
 		marketFrame.setVisible(true);
 	}
 }

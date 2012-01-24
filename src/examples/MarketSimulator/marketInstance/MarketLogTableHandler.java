@@ -17,19 +17,19 @@ public class MarketLogTableHandler {
 		if (marketOrder.getType().equals("BUY")) {
 			
 			Object[] temp = {marketOrder.getOrderID(), "Buy", marketOrder.getQuantity(), "-", "None"};
-			marketGui.marketLogTable.addRow(temp);
+			marketGui.marketTabbedPane.marketLogTable.addRow(temp);
 		} else if (marketOrder.getType().equals("SELL")) {
 
 			Object[] temp = {marketOrder.getOrderID(), "Sell", marketOrder.getQuantity(), "-", "None"};
-			marketGui.marketLogTable.addRow(temp);
+			marketGui.marketTabbedPane.marketLogTable.addRow(temp);
 		} else if (marketOrder.getType().equals("BID")) {
 
 			Object[] temp = {marketOrder.getOrderID(), "Bid", marketOrder.getQuantity(), Math.abs(Integer.parseInt(marketOrder.getPrice())), "None"};
-			marketGui.marketLogTable.addRow(temp);
+			marketGui.marketTabbedPane.marketLogTable.addRow(temp);
 		} else if (marketOrder.getType().equals("OFFER")) {
 
 			Object[] temp = {marketOrder.getOrderID(), "Offer", marketOrder.getQuantity(), Math.abs(Integer.parseInt(marketOrder.getPrice())), "None"};
-			marketGui.marketLogTable.addRow(temp);
+			marketGui.marketTabbedPane.marketLogTable.addRow(temp);
 		}
 		
 	}

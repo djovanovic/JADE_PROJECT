@@ -22,7 +22,7 @@ public abstract class OrderBookList extends OrderBookingEngine {
 	public void updateTable(String orderID, String comment, MarketLogTable.UpdateType updateType) {
 		
 		MarketGui marketGui = (MarketGui) MarketAgent.agent.agentGui;
-		marketGui.marketLogTable.updateTable(orderID, comment, updateType);
+		marketGui.marketTabbedPane.marketLogTable.updateTable(orderID, comment, updateType);
 	}
 	
 	public void renderOrder(int price) {

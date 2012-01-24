@@ -53,12 +53,11 @@ public class MarketLogTable extends JTable {
 			Component c = super.prepareRenderer(tableCellRenderer, row, column);
 			
 			c.setBackground(rowProperties.get(row));
+			
+			// Pushes scroll bad to the bottom.
+	 		this.scrollRectToVisible(new Rectangle(this.getCellRect(this.getRowCount(), 0, true)));
+	 		
 			return c;
-	}
-	
-	public JScrollPane getScrollPane() {
-		
-		return new JScrollPane(this);
 	}
 	
 	public void addRow(Object[] data) {
