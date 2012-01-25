@@ -1,5 +1,7 @@
 package examples.MarketSimulator.traderInstance;
 
+import jade.core.Agent;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,14 +9,16 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 public class TraderAgentGuiActionListener {
-	
+
 	private JTextField quantity, price;
 	private String market;
 	private int orderType;
 	private TraderOrder traderOrder;
+	private TraderAgent agent;
 	
-	public TraderAgentGuiActionListener(String market, int orderType) {
+	public TraderAgentGuiActionListener(String market, int orderType, Agent agent) {
 		
+		this.agent = (TraderAgent) agent;
 		this.market = market;
 		this.orderType = orderType;
 	}
@@ -28,9 +32,9 @@ public class TraderAgentGuiActionListener {
             public void actionPerformed(ActionEvent e)
             {
             	
-            	traderOrder = new TraderOrder(orderType, quantity.getText());
-            	TraderAgent.agent.traderOrderList.add(traderOrder);
-            	TraderAgent.agent.addBehaviour(new TraderMessageClient(market, traderOrder.tokenize()));
+            	traderOrder = new TraderOrder(orderType, quantity.getText(), agent);
+            	agent.traderOrderList.add(traderOrder);
+            	agent.addBehaviour(new TraderMessageSender(market, traderOrder.tokenize()));
             	
             }
         }); 
@@ -45,9 +49,9 @@ public class TraderAgentGuiActionListener {
             public void actionPerformed(ActionEvent e)
             {
             	
-            	traderOrder = new TraderOrder(orderType, quantity.getText());
-            	TraderAgent.agent.traderOrderList.add(traderOrder);
-            	TraderAgent.agent.addBehaviour(new TraderMessageClient(market, traderOrder.tokenize()));
+            	traderOrder = new TraderOrder(orderType, quantity.getText(), agent);
+            	agent.traderOrderList.add(traderOrder);
+            	agent.addBehaviour(new TraderMessageSender(market, traderOrder.tokenize()));
             	
             }
         }); 
@@ -62,9 +66,9 @@ public class TraderAgentGuiActionListener {
 			 
             public void actionPerformed(ActionEvent e)
             {
-            	traderOrder = new TraderOrder(orderType, quantity.getText(), price.getText());
-            	TraderAgent.agent.traderOrderList.add(traderOrder);
-            	TraderAgent.agent.addBehaviour(new TraderMessageClient(market, traderOrder.tokenize()));
+            	traderOrder = new TraderOrder(orderType, quantity.getText(), price.getText(), agent);
+            	agent.traderOrderList.add(traderOrder);
+            	agent.addBehaviour(new TraderMessageSender(market, traderOrder.tokenize()));
             }
         }); 
 	}
@@ -78,9 +82,9 @@ public class TraderAgentGuiActionListener {
 			 
             public void actionPerformed(ActionEvent e)
             {
-            	traderOrder = new TraderOrder(orderType, quantity.getText(), "-" + price.getText());
-            	TraderAgent.agent.traderOrderList.add(traderOrder);
-            	TraderAgent.agent.addBehaviour(new TraderMessageClient(market, traderOrder.tokenize()));
+            	traderOrder = new TraderOrder(orderType, quantity.getText(), "-" + price.getText(), agent);
+            	agent.traderOrderList.add(traderOrder);
+            	agent.addBehaviour(new TraderMessageSender(market, traderOrder.tokenize()));
             }
         }); 
 	}

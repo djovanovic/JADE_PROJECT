@@ -24,6 +24,20 @@ public abstract class OrderBookList extends OrderBookingEngine {
 		MarketGui marketGui = (MarketGui) MarketAgent.agent.agentGui;
 		marketGui.marketTabbedPane.marketLogTable.updateTable(orderID, comment, updateType);
 	}
+
+	public void updateTable(String orderID, int price, String comment, MarketLogTable.UpdateType updateType) {
+		
+		MarketGui marketGui = (MarketGui) MarketAgent.agent.agentGui;
+		marketGui.marketTabbedPane.marketLogTable.updateTable(orderID, price, comment, updateType);
+	}
+	
+	public void updatePairTable(String PairID, int price, int quantity) {
+		
+
+		MarketGui marketGui = (MarketGui) MarketAgent.agent.agentGui;
+		Object[] data = {PairID, quantity, Math.abs(price)};
+		marketGui.marketTabbedPane.marketPairTable.addRow(data);
+	}
 	
 	public void renderOrder(int price) {
 		

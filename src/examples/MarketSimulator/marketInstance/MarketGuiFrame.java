@@ -3,20 +3,13 @@ package examples.MarketSimulator.marketInstance;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GraphicsConfiguration;
-import java.awt.GridLayout;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSeparator;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
 
-import examples.MarketSimulator.AgentGui;
 import examples.MarketSimulator.StackLayout;
 import examples.MarketSimulator.orderBookGui.OrderBookGui;
-import examples.MarketSimulator.traderInstance.TraderLogTable;
 
 public class MarketGuiFrame {
 
@@ -48,7 +41,6 @@ public class MarketGuiFrame {
 		// Add LogTable
 		marketLogTablePanel = new JPanel();		
 		marketTabbedPane = new MarketTabbedPane();
-		marketTabbedPane.setPreferredSize(new Dimension(690, 230));
 		
 		marketLogTablePanel.add(marketTabbedPane, BorderLayout.CENTER);
 		

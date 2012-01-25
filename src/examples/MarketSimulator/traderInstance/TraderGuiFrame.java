@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -101,7 +102,7 @@ public class TraderGuiFrame {
 		JPanel traderLogTablePanel = new JPanel();		
 		traderLogTable = new TraderLogTable();
 
-		traderLogTablePanel.add( traderLogTable.getScrollPane(), BorderLayout.CENTER );
+		traderLogTablePanel.add( new JScrollPane(traderLogTable), BorderLayout.CENTER );
 		traderFrame.add(traderLogTablePanel);
 	}
 	

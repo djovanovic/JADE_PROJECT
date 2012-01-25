@@ -1,7 +1,13 @@
 package examples.MarketSimulator;
 
-public abstract class AgentOrder {
+import examples.MarketSimulator.traderInstance.TraderAgent;
 
+public abstract class AgentOrder extends TraderAgent {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected String type,quantity, price;
 
 	public AgentOrder(String type, String quantity, String price) {

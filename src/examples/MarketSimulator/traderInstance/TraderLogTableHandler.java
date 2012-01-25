@@ -12,7 +12,7 @@ public class TraderLogTableHandler {
 	
 	public void log(TraderOrder traderOrder) {
 		
-		TraderGui traderGui = (TraderGui) traderAgent.agentGui;
+		TraderGui traderGui = (TraderGui) traderAgent.traderGui;
 		
 		if (Integer.parseInt(traderOrder.getType()) == 0) {
 			
@@ -24,11 +24,11 @@ public class TraderLogTableHandler {
 			traderGui.traderLogTable.addRow(temp);
 		} else if (Integer.parseInt(traderOrder.getType()) == 2) {
 
-			Object[] temp = {traderOrder.getOrderID(), "Bid", traderOrder.getQuantity(), traderOrder.getPrice(), "None"};
+			Object[] temp = {traderOrder.getOrderID(), "Bid", traderOrder.getQuantity(), Math.abs(Integer.parseInt(traderOrder.getPrice())), "None"};
 			traderGui.traderLogTable.addRow(temp);
 		} else if (Integer.parseInt(traderOrder.getType()) == 3) {
 
-			Object[] temp = {traderOrder.getOrderID(), "Offer", traderOrder.getQuantity(), traderOrder.getPrice(), "None"};
+			Object[] temp = {traderOrder.getOrderID(), "Offer", traderOrder.getQuantity(), Math.abs(Integer.parseInt(traderOrder.getPrice())), "None"};
 			traderGui.traderLogTable.addRow(temp);
 		}
 		
